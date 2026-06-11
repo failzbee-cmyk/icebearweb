@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Icebear Web Store - Template Premium</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<style>
+/* --- Pengaturan Dasar & Tipografi --- */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif; /* Menggunakan font yang lebih modern */
+}
+
+/* Mengambil font dari Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+body{
+    background-color: #0d1117; /* Latar belakang gelap yang lebih kaya */
+    color: #c9d1d9;
+    line-height: 1.6;
+}
+
+/* --- Navigasi Bar --- */
+nav {
+    background-color: #161b22;
+    padding: 15px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.nav-logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.nav-logo i {
+    margin-right: 10px;
+    color: #2ea043; /* Warna aksen hijau/teal */
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #c9d1d9;
+    font-weight: 400;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: white;
+}
+
+/* --- Header & Bagian Atas --- */
+header{
+    text-align: center;
+    padding: 80px 20px 40px;
+    background: radial-gradient(circle, #1c2128 0%, #0d1117 100%);
+}
+
+header h1{
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: white;
+    letter-spacing: -1px;
+}
+
+header p{
+    color: #8b949e;
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* --- Kontainer Utama & Bagian Statistik --- */
+.container{
+    max-width: 1200px;
+    margin: auto;
+    padding: 40px 20px;
+}
+
+.stats{
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.stats h2{
+    font-size: 2.2rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: white;
+}
+
+.stats p{
+    color: #8b949e;
+    font-size: 1rem;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* --- Grid & Kartu Produk --- */
+.grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.card{
+    background: #161b22; /* Latar belakang kartu yang sedikit lebih terang */
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #30363d; /* Garis tepi halus */
+}
+
+.card:hover{
+    transform: translateY(-8px);
+    box-shadow: 0 12px 20px rgba(0,0,0,0.5);
+    border-color: #2ea043; /* Garis tepi saat hover */
+}
+
+.thumbnail{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+    display:block;
+}
+
+.demo-btn{
+    background:#00ce56;
+    color:white;
+    text-decoration:none;
+    padding:12px;
+    border-radius:8px;
+    display:block;
+    text-align:center;
+    font-weight:600;
+    margin-bottom:12px;
+    cursor:pointer;
+}
+
+.demo-btn:hover{
+    background:#00ce56;
+}
+
+.modal{
+    display:none;
+    position:fixed;
+    z-index:9999;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.85);
+}
+
+.modal-content{
+    position:relative;
+    width:90%;
+    max-width:900px;
+    margin:5% auto;
+}
+
+.modal iframe{
+    width:100%;
+    height:500px;
+    border:none;
+}
+
+.close{
+    position:absolute;
+    top:-40px;
+    right:0;
+    color:white;
+    font-size:35px;
+    cursor:pointer;
+}
+.content{
+    padding: 25px;
+}
+
+.content h2{
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+.content h2 i {
+    margin-right: 10px;
+    font-size: 1.2rem;
+}
+
+.content p{
+    color: #8b949e;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+    height: 60px; /* Menjaga tinggi deskripsi agar tombol sejajar */
+    overflow: hidden;
+}
+
+.price-tag {
+    background-color: #21262d;
+    padding: 10px 15px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border: 1px solid #30363d;
+}
+
+.price-label {
+    color: #8b949e;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.price-value{
+    font-size: 1.6rem;
+    color: #2ea043;
+    font-weight: 700;
+}
+
+/* --- Tombol --- */
+.btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    color: white;
+    font-weight: 600;
+    width: 100%;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.order{
+    background-color: #238636; /* Warna hijau yang lebih diredam */
+}
+
+.order:hover {
+    background-color: #2ea043;
+}
+
+.order i {
+    margin-right: 10px;
+}
+
+/* --- Footer --- */
+footer{
+    text-align: center;
+    padding: 60px 20px;
+    background-color: #161b22;
+    color: #8b949e;
+    border-top: 1px solid #30363d;
+}
+
+.footer-socials {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.footer-socials a {
+    color: #8b949e;
+    font-size: 1.5rem;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-socials a:hover {
+    color: white;
+}
+
+/* --- Media Queries untuk Responsivitas --- */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2.5rem;
+    }
+    .stats h2 {
+        font-size: 1.8rem;
+    }
+    .nav-links {
+        display: none; /* Menyembunyikan tautan di layar kecil (bisa diganti hamburger menu) */
+    }
+}
+</style>
+</head>
+<body>
+
+<nav>
+    <a href="#" class="nav-logo">
+        <i class="fas fa-ice-cream"></i> ICEBEAR
+    </a>
+    <ul class="nav-links">
+        <li><a href="#templates">Template</a></li>
+        <li><a href="#about">Tentang Kami</a></li>
+        <li><a href="#contact">Kontak</a></li>
+    </ul>
+</nav>
+
+<header>
+    <h1>ICEBEAR WEB STORE</h1>
+    <p>Temukan template web ucapan premium yang siap pakai untuk momen spesial Anda.</p>
+</header>
+
+<div class="container" id="templates">
+
+    <div class="stats">
+        <h2>Pilih Template Favoritmu</h2>
+        <p>Lihat demo video di bawah ini untuk melihat detail template. Klik tombol untuk memesan langsung melalui WhatsApp.</p>
+    </div>
+
+    <div class="grid">
+
+        <div class="card">
+            <img src="img/thumb1.jpg" class="thumbnail">
+
+            <!-- GANTI_LINK_YOUTUBE_WEB1 -->
+            <a class="demo-btn"
+            onclick="openVideo('https://www.youtube.com/embed/VTDdxuduK5s')">
+            🎥 Tonton Demo
+            </a> 
+
+            <div class="content">
+                <h2><i class="fas fa-heart"></i> Web (#1)</h2>
+                <p>💖 Template romantis dengan musik latar, galeri foto, dan animasi halus.</p>
+
+                <div class="price-tag">
+                    <span class="price-label">Harga</span>
+                    <span class="price-value">Rp 15.000</span>
+                </div>
+
+                <a class="btn order"
+                href="https://wa.me/628892250711?text=Halo%20saya%20ingin%20pesan%20Web1">
+                <i class="fab fa-whatsapp"></i> Pesan Sekarang
+                </a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="img/thumb2.jpg" class="thumbnail">
+
+            <!-- GANTI_LINK_YOUTUBE_WEB2 -->
+            <a class="demo-btn"
+            onclick="openVideo('https://www.youtube.com/embed/5LSXb-0xdMQ')">
+            🎥 Tonton Demo
+            </a>
+            <div class="content">
+                <h2><i class="fas fa-birthday-cake"></i> Web (#2)</h2>
+                <p>🎂 Template ulang tahun interaktif dengan animasi meriah dan slideshow foto.</p>
+
+                <div class="price-tag">
+                    <span class="price-label">Harga</span>
+                    <span class="price-value">Rp 15.000</span>
+                </div>
+
+                <a class="btn order"
+                href="https://wa.me/628892250711?text=Halo%20saya%20ingin%20pesan%20Web2">
+                <i class="fab fa-whatsapp"></i> Pesan Sekarang
+                </a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="img/thumb3.jpg" class="thumbnail">
+
+            <!-- GANTI_LINK_YOUTUBE_WEB3 -->
+            <a class="demo-btn"
+            onclick="openVideo('https://www.youtube.com/embed/5M2RVvkqgI8')">
+            🎥 Tonton Demo
+            </a>
+
+            <div class="content">
+                <h2><i class="fas fa-star"></i> Web (#3)</h2>
+                <p>🎁 Hadiah digital unik untuk sahabat, pasangan, keluarga, atau orang tersayang.</p>
+
+                <div class="price-tag">
+                    <span class="price-label">Harga</span>
+                    <span class="price-value">Rp 15.000</span>
+                </div>
+
+                <a class="btn order"
+                href="https://wa.me/628892250711?text=Halo%20saya%20ingin%20pesan%20Web3">
+                <i class="fab fa-whatsapp"></i> Pesan Sekarang
+                </a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="img/thumb4.jpg" class="thumbnail">
+
+            <!-- GANTI_LINK_YOUTUBE_WEB4 -->
+            <a class="demo-btn"
+            onclick="openVideo('https://www.youtube.com/embed/Y18N6E0T3Jk')">
+            🎥 Tonton Demo
+            </a>
+            <div class="content">
+                <h2><i class="fas fa-gem"></i> Web (#4)</h2>
+                <p>✨ Tambahkan foto kenangan, lagu favorit, dan pesan spesial</p>
+
+                <div class="price-tag">
+                    <span class="price-label">Harga</span>
+                    <span class="price-value">Rp 20.000</span>
+                </div>
+
+                <a class="btn order"
+                href="https://wa.me/628892250711?text=Halo%20saya%20ingin%20pesan%20Web4">
+                <i class="fab fa-whatsapp"></i> Pesan Sekarang
+                </a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="img/thumb5.jpg" class="thumbnail">
+
+            <!-- GANTI_LINK_YOUTUBE_WEB5 -->
+            <a class="demo-btn"
+            onclick="openVideo('https://www.youtube.com/embed/xtgbL7OlZMY')">
+            🎥 Tonton Demo
+            </a>
+
+            <div class="content">
+                <h2><i class="fas fa-star"></i> Web (#5)</h2>
+                <p>🎉 Website ucapan ulang tahun dengan foto, musik, dan animasi yang membuat momen spesial semakin berkesan.</p>
+
+                <div class="price-tag">
+                    <span class="price-label">Harga</span>
+                    <span class="price-value">Rp 25.000</span>
+                </div>
+
+                <a class="btn order"
+                href="https://wa.me/628892250711?text=Halo%20saya%20ingin%20pesan%20Web5">
+                <i class="fab fa-whatsapp"></i> Pesan Sekarang
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<footer>
+    <div class="footer-socials">
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+    </div>
+    <p>© 2026 Icebear Web Store | Desain Modern dengan ❤️</p>
+</footer>
+
+</body>
+</html>
