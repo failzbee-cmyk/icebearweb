@@ -536,69 +536,7 @@ nav {
   display: block;
 }
 
-/* ===== WATERMARK ===== */
-.demo-watermark {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 10;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  user-select: none;
-  -webkit-user-select: none;
-}
 
-.wm-text {
-  font-family: var(--font-d);
-  font-size: 52px;
-  font-weight: 900;
-  color: rgba(0,0,0,0.065);
-  text-align: center;
-  letter-spacing: 6px;
-  text-transform: uppercase;
-  transform: rotate(-28deg);
-  line-height: 1.3;
-  white-space: nowrap;
-  text-shadow: none;
-}
-
-.wm-text small {
-  display: block;
-  font-size: 16px;
-  letter-spacing: 10px;
-  margin-top: 4px;
-  color: rgba(0,0,0,0.04);
-  font-family: var(--font-s);
-  font-weight: 700;
-}
-
-/* Watermark pattern (tiled) */
-.wm-pattern {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  pointer-events: none;
-  z-index: 10;
-  user-select: none;
-  -webkit-user-select: none;
-}
-
-.wm-tile {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-s);
-  font-weight: 700;
-  font-size: 13px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: rgba(0,0,0,0.055);
-  transform: rotate(-25deg);
-  white-space: nowrap;
-}
 
 .demo-notice {
   font-size: 0.78rem;
@@ -952,7 +890,7 @@ footer {
   <p class="footer-tagline">Template Web Ucapan Premium — Mudah, Cepat, Berkesan.</p>
   <div class="footer-socials">
     <a href="#"><i class="fab fa-instagram"></i></a>
-    <a href="https://www.tiktok.com/@_icebearfz?is_from_webapp=1&sender_device=pc"><i class="fab fa-tiktok"></i></a>
+    <a href="#"><i class="fab fa-tiktok"></i></a>
     <a href="https://wa.me/628892250711"><i class="fab fa-whatsapp"></i></a>
   </div>
   <p class="footer-copy">© 2026 Icebear Web Store · Dibuat dengan <span style="color:var(--pink)">♥</span> di Indonesia</p>
@@ -974,7 +912,7 @@ footer {
   </div>
 
   <div class="demo-wrapper">
-    <iframe class="demo-iframe" id="demoFrame" src="" sandbox="allow-scripts allow-same-origin allow-forms"></iframe>
+    <iframe class="demo-iframe" id="demoFrame" src="" sandbox="allow-scripts allow-same-origin allow-forms" scrolling="yes"></iframe>
   </div>
 
   <p class="demo-notice">
@@ -984,17 +922,6 @@ footer {
 </div>
 
 <script>
-// --- Watermark pattern tiles ---
-(function(){
-  const pattern = document.getElementById('wmPattern');
-  for(let i = 0; i < 9; i++){
-    const tile = document.createElement('div');
-    tile.className = 'wm-tile';
-    tile.textContent = '✦ ICEBEAR DEMO ✦';
-    pattern.appendChild(tile);
-  }
-})();
-
 // --- Video Modal ---
 function openVideo(url){
   document.getElementById('modalVideo').classList.add('active');
