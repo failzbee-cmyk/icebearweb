@@ -523,10 +523,11 @@ nav {
   position: relative;
   width: calc(100vw - 32px);
   height: calc(100vh - 110px);
+  max-height: 750px; /* ← batasi tinggi maksimal */
   border-radius: 14px;
   overflow: hidden;
   border: 1px solid var(--border);
-  background: #fff;
+  background: var(--bg); /* ← ganti dari #fff ke warna gelap */
 }
 
 .demo-iframe {
@@ -534,6 +535,7 @@ nav {
   height: 100%;
   border: none;
   display: block;
+  min-height: 600px;
 }
 
 
