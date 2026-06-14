@@ -476,12 +476,12 @@ nav {
   position: fixed;
   inset: 0;
   z-index: 9999;
-  background: rgba(0,0,0,0.95);
+  background: rgba(0,0,0,0.96);
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap: 14px;
-  padding: 20px;
+  gap: 10px;
+  padding: 16px;
 }
 
 .modal-demo.active { display: flex; }
@@ -491,30 +491,38 @@ nav {
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  max-width: 900px;
+  max-width: calc(100vw - 32px);
 }
 
 .demo-title {
   font-family: var(--font-d);
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   color: var(--white);
 }
 
 .demo-close {
-  background: none;
-  border: none;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid var(--border);
+  border-radius: 8px;
   color: var(--muted);
-  font-size: 1.6rem;
+  font-size: 1rem;
   cursor: pointer;
-  transition: color 0.2s;
+  transition: color 0.2s, background 0.2s;
+  padding: 6px 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
-.demo-close:hover { color: var(--white); }
+.demo-close:hover {
+  color: var(--white);
+  background: rgba(255,255,255,0.14);
+}
 
 .demo-wrapper {
   position: relative;
-  width: 100%;
-  max-width: 900px;
+  width: calc(100vw - 32px);
+  height: calc(100vh - 110px);
   border-radius: 14px;
   overflow: hidden;
   border: 1px solid var(--border);
@@ -523,7 +531,7 @@ nav {
 
 .demo-iframe {
   width: 100%;
-  height: 520px;
+  height: 100%;
   border: none;
   display: block;
 }
@@ -656,6 +664,57 @@ footer {
   font-size: 0.8rem;
 }
 
+/* ===== FREE REQUEST STRIP ===== */
+.free-request {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  padding: 10px 14px;
+  background: linear-gradient(135deg, rgba(255,110,180,0.07), rgba(245,200,66,0.06));
+  border: 1px solid rgba(255,110,180,0.18);
+  border-radius: 10px;
+  margin-bottom: 16px;
+}
+
+.free-request-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--pink);
+  background: rgba(255,110,180,0.15);
+  border: 1px solid rgba(255,110,180,0.25);
+  border-radius: 999px;
+  padding: 2px 10px;
+  white-space: nowrap;
+}
+
+.free-request-items {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.free-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text);
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 3px 10px;
+  white-space: nowrap;
+}
+
+.free-tag i {
+  font-size: 0.65rem;
+  color: var(--gold);
+}
+
 /* ===== RESPONSIVE ===== */
 @media (max-width: 640px) {
   .hero h1 { font-size: 2.4rem; }
@@ -690,7 +749,6 @@ footer {
   </div>
   <h1>Hadiahkan Momen<br><em>yang Tak Terlupakan</em></h1>
   <p class="hero-sub">Template web ucapan cantik dengan animasi, musik, dan foto — siap pakai dalam hitungan menit.</p>
-  <p class="hero-sub">FREE ganti foto, teks dan lagu</p>
   <div class="hero-stats">
     <div class="stat">
       <div class="stat-num">5<span>+</span></div>
@@ -724,6 +782,14 @@ footer {
         <div class="card-content">
           <div class="card-title"><i class="fas fa-heart"></i> Web Template #1</div>
           <div class="card-desc">Romantis dengan musik latar, galeri foto, dan animasi lembut yang menyentuh hati.</div>
+          <div class="free-request">
+            <span class="free-request-label">✦ Free</span>
+            <div class="free-request-items">
+              <span class="free-tag"><i class="fas fa-font"></i> Ganti Teks</span>
+              <span class="free-tag"><i class="fas fa-image"></i> Ganti Foto</span>
+              <span class="free-tag"><i class="fas fa-music"></i> Ganti Lagu</span>
+            </div>
+          </div>
           <div class="price-row">
             <span class="price-label">Harga</span>
             <span class="price-value">Rp 15.000</span>
@@ -750,6 +816,14 @@ footer {
         <div class="card-content">
           <div class="card-title"><i class="fas fa-birthday-cake"></i> Web Template #2</div>
           <div class="card-desc">Ulang tahun interaktif dengan animasi meriah, slideshow foto, dan kejutan spesial.</div>
+          <div class="free-request">
+            <span class="free-request-label">✦ Free</span>
+            <div class="free-request-items">
+              <span class="free-tag"><i class="fas fa-font"></i> Ganti Teks</span>
+              <span class="free-tag"><i class="fas fa-image"></i> Ganti Foto</span>
+              <span class="free-tag"><i class="fas fa-music"></i> Ganti Lagu</span>
+            </div>
+          </div>
           <div class="price-row">
             <span class="price-label">Harga</span>
             <span class="price-value">Rp 15.000</span>
@@ -775,6 +849,14 @@ footer {
         <div class="card-content">
           <div class="card-title"><i class="fas fa-star"></i> Web Template #3</div>
           <div class="card-desc">Hadiah digital unik untuk sahabat, pasangan, atau keluarga tersayang.</div>
+          <div class="free-request">
+            <span class="free-request-label">✦ Free</span>
+            <div class="free-request-items">
+              <span class="free-tag"><i class="fas fa-font"></i> Ganti Teks</span>
+              <span class="free-tag"><i class="fas fa-image"></i> Ganti Foto</span>
+              <span class="free-tag"><i class="fas fa-music"></i> Ganti Lagu</span>
+            </div>
+          </div>
           <div class="price-row">
             <span class="price-label">Harga</span>
             <span class="price-value">Rp 15.000</span>
@@ -800,6 +882,14 @@ footer {
         <div class="card-content">
           <div class="card-title"><i class="fas fa-gem"></i> Web Template #4</div>
           <div class="card-desc">Foto kenangan, lagu favorit, dan pesan spesial dalam satu halaman elegan.</div>
+          <div class="free-request">
+            <span class="free-request-label">✦ Free</span>
+            <div class="free-request-items">
+              <span class="free-tag"><i class="fas fa-font"></i> Ganti Teks</span>
+              <span class="free-tag"><i class="fas fa-image"></i> Ganti Foto</span>
+              <span class="free-tag"><i class="fas fa-music"></i> Ganti Lagu</span>
+            </div>
+          </div>
           <div class="price-row">
             <span class="price-label">Harga</span>
             <span class="price-value">Rp 20.000</span>
@@ -826,6 +916,14 @@ footer {
         <div class="card-content">
           <div class="card-title"><i class="fas fa-crown"></i> Web Template #5</div>
           <div class="card-desc">Versi premium dengan animasi cinematic, efek partikel, dan desain yang mewah.</div>
+          <div class="free-request">
+            <span class="free-request-label">✦ Free</span>
+            <div class="free-request-items">
+              <span class="free-tag"><i class="fas fa-font"></i> Ganti Teks</span>
+              <span class="free-tag"><i class="fas fa-image"></i> Ganti Foto</span>
+              <span class="free-tag"><i class="fas fa-music"></i> Ganti Lagu</span>
+            </div>
+          </div>
           <div class="price-row">
             <span class="price-label">Harga</span>
             <span class="price-value">Rp 25.000</span>
@@ -872,16 +970,10 @@ footer {
 <div id="modalDemo" class="modal-demo">
   <div class="demo-header">
     <span class="demo-title" id="demoTitle">Live Demo</span>
-    <button class="demo-close" onclick="closeDemo()"><i class="fas fa-times"></i></button>
+    <button class="demo-close" onclick="closeDemo()"><i class="fas fa-times"></i> Tutup</button>
   </div>
 
   <div class="demo-wrapper">
-    <!-- WATERMARK PATTERN -->
-    <div class="wm-pattern" id="wmPattern"></div>
-    <!-- WATERMARK TENGAH -->
-    <div class="demo-watermark">
-      <div class="wm-text">DEMO<small>icebear.store</small></div>
-    </div>
     <iframe class="demo-iframe" id="demoFrame" src="" sandbox="allow-scripts allow-same-origin allow-forms"></iframe>
   </div>
 
